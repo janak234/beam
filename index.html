@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- tailwind css -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safari MOV Video</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 </head>
-<body class="bg-green-900">
-    <!-- center the content -->
-    <div class="flex justify-center items-center h-screen text-white">
-        <h1 class="text-2xl font-bold">Hello World 😊</h1>
-    </div>
+<body class="bg-green-900 m-0 p-0">
+  <video id="bgVideo" autoplay loop muted playsinline style="height: 100vh; width: 100vw;">
+    <source src="assets/alien.webm" type="video/webm" />
+    <source src="assets/output.mov" type="video/mov" />
+    <!-- Safari-specific .mov will be set via script -->
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    // Detect Safari
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
+      const video = document.getElementById('bgVideo');
+      // Clear existing sources
+      video.innerHTML = '';
+      const movSource = document.createElement('source');
+      movSource.src = 'assets/alien.mov';
+      movSource.type = 'video/quicktime';
+      video.appendChild(movSource);
+      video.load();
+      video.play().catch(e => console.error('Autoplay failed:', e));
+    }
+  </script>
 </body>
 </html>
