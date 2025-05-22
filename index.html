@@ -9,27 +9,45 @@
 </head>
 <body class="bg-green-900 m-0 p-0">
     <p>hello janak</p>
-  <video id="bgVideo" autoplay loop muted playsinline style="height: 100vh; width: 100vw;">
-    <source src="assets/alien.webm" type="video/webm" />
+  <video  autoplay loop muted playsinline >
+    <!-- <source src="assets/alien.webm" type="video/webm" /> -->
     <source src="assets/safari1.mov" type="video/mov" />
     <!-- Safari-specific .mov will be set via script -->
     Your browser does not support the video tag.
   </video>
+  <video autoplay loop muted playsinline >
+    <!-- <source src="assets/alien.webm" type="video/webm" /> -->
+    <source src="assets/output-safari.mov" type="video/mov" />
+    <!-- Safari-specific .mov will be set via script -->
+    Your browser does not support the video tag.
+  </video>
+  <video autoplay loop muted playsinline >
+    <!-- <source src="assets/alien.webm" type="video/webm" /> -->
+    <source src="assets/output.mov" type="video/mov" />
+    <!-- Safari-specific .mov will be set via script -->
+    Your browser does not support the video tag.
+  </video>
+
+
+  <!-- <img src="_imgs/GIF-01.gif" alt="alien" /> -->
 
   <script>
-    // Detect Safari
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    if (isSafari) {
-      const video = document.getElementById('bgVideo');
-      // Clear existing sources
-      video.innerHTML = '';
-      const movSource = document.createElement('source');
-      movSource.src = 'assets/safari1.mov';
-      movSource.type = 'video/quicktime';
-      video.appendChild(movSource);
-      video.load();
-      video.play().catch(e => console.error('Autoplay failed:', e));
-    }
+
+  //   document.addEventListener('DOMContentLoaded', function() {
+  //     // Detect Safari
+  //     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  //   if (isSafari) {
+  //     const video = document.getElementById('bgVideo');
+  //     // Clear existing sources
+  //     video.innerHTML = '';
+  //     const movSource = document.createElement('source');
+  //     movSource.src = 'assets/safari1.mov';
+  //     movSource.type = 'video/quicktime';
+  //     video.appendChild(movSource);
+  //     video.load();
+  //     video.play().catch(e => console.error('Autoplay failed:', e));
+  //   }
+  // });
   </script>
 </body>
 </html>
